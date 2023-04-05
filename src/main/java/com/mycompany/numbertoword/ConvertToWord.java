@@ -14,7 +14,7 @@ public class ConvertToWord {
    private static String ConvertInteger(long n){
         
         HashMap<String, String> numberMap = new HashMap<>();
-        numberMap.put("0", "sıfır");
+        numberMap.put("0", "");
         numberMap.put("1", "bir");
         numberMap.put("2", "iki");
         numberMap.put("3", "üç");
@@ -96,52 +96,27 @@ public class ConvertToWord {
         String intResult = ConvertInteger(intPart);
         String decimalResult = ConvertInteger(decimalPart);
         
+        if(intResult.isEmpty() || intResult.isBlank()){
+            intResult = "sıfır";
+        }
+        
         int numDigits = (int) Math.floor(Math.log10(Math.abs(decimalPart))) + 1;
 
         String descString = "tam ";
         switch (numDigits) {
-            case 1:
-                descString = descString + "onda";
-                break;
-            case 2:
-                descString = descString + "yüzdə";
-                break;
-            case 3:
-                descString = descString + "mində";
-                break;
-            case 4:
-                descString = descString + "on minde";
-                break;
-                
-            case 5:
-                descString = descString + "yüz mində";
-                break;
-            case 6:
-                descString = descString + "bir milyonda";
-                break;
-                
-            case 7:
-                descString = descString + "on milyonda";
-                break;
-            case 8:
-                descString = descString + "yüz milyonda";
-                break;
-                
-            case 9:
-                descString = descString + "on milyardda";
-                break;
-            case 10:
-                descString = descString + "yüz milyardda";
-                break;
-            case 11:
-                descString = descString + "bir trilyonda";
-                break;
-            case 12:
-                descString = descString + "on trilyonda";
-                break;
-            case 13:
-                descString = descString + "yüz trilyonda";
-                break;
+            case 1 -> descString = descString + "onda";
+            case 2 -> descString = descString + "yüzdə";
+            case 3 -> descString = descString + "mində";
+            case 4 -> descString = descString + "on minde";
+            case 5 -> descString = descString + "yüz mində";
+            case 6 -> descString = descString + "bir milyonda";
+            case 7 -> descString = descString + "on milyonda";
+            case 8 -> descString = descString + "yüz milyonda";
+            case 9 -> descString = descString + "on milyardda";
+            case 10 -> descString = descString + "yüz milyardda";
+            case 11 -> descString = descString + "bir trilyonda";
+            case 12 -> descString = descString + "on trilyonda";
+            case 13 -> descString = descString + "yüz trilyonda";
        }
         
         result = intResult + " " + descString + " " + decimalResult;
